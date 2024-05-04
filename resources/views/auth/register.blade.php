@@ -53,7 +53,7 @@
                             <div class="form-group mb-3 row">
                                 <div class="col-12">
                                     <input class="form-control" type="text" placeholder="Username" name="username"
-                                        :value="old('username')" autocomplete="username">
+                                        value="{{ old('username') }}" autocomplete="username">
                                     @error('username')
                                         <p class="text-danger mt-2 mb-0">{{ $message }} </p>
                                     @enderror
@@ -97,7 +97,7 @@
 
                             <div class="form-group mt-2 mb-0 row">
                                 <div class="col-12 mt-3 text-center">
-                                    <a href="pages-login.html" class="text-muted">Already have account?</a>
+                                    <a href="{{ route('login') }}" class="text-muted">Already have account?</a>
                                 </div>
                             </div>
                         </form>
