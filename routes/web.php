@@ -23,13 +23,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function(){
         return view('admin.index');
     })->name('dashboard');
-    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
     // All Routes of Admin
     Route::get('/logout', [AdminController::class, 'destroy'])->name('admin.logout');
     Route::get('/profile', [AdminController::class, 'profile'])->name('admin.profile');
+    Route::get('/profile/edit', [AdminController::class, 'profile_edit'])->name('profile.edit');
 });    
 
 

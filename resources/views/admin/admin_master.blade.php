@@ -1,4 +1,4 @@
-@extends('admin.main_layout')
+@extends('admin.body.main_layout')
 @section('page_content')
     <!-- Begin page -->
     <div id="layout-wrapper">
@@ -14,12 +14,15 @@
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
-        <div class="main-content"  style="margin-top: 5rem;margin-left: 255px">
+        <div class="main-content">
+            <div class="page-content">
+                <div class="container-fluid">
+                    @yield('admin')
+                    <!-- End Page-content -->
+                    @include('admin.body.footer')
 
-            @yield('admin')
-            <!-- End Page-content -->
-            @include('admin.body.footer')
-
+                </div>
+            </div>
         </div>
         <!-- end main content-->
 

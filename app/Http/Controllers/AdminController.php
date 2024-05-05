@@ -24,13 +24,22 @@ class AdminController extends Controller
     }
 
     /**
-     * Show user profile 
+     * Show Admin profile 
      */
     public function profile()
     {
         $id = Auth::user()->id;
         $adminData = User::find($id);
         return view('admin.admin_profile', compact('adminData'));
+    }
+
+    /**
+     * Edit Admin profile
+     */
+    public function profile_edit(){
+        $id = Auth::user()->id;
+        $adminData = User::find($id);
+        return view('admin.admin_profile_edit', compact('adminData'));
     }
 
 }
