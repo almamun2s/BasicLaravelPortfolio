@@ -30,6 +30,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/logout', [AdminController::class, 'destroy'])->name('admin.logout');
     Route::get('/profile', [AdminController::class, 'profile'])->name('admin.profile');
     Route::get('/profile/edit', [AdminController::class, 'profile_edit'])->name('profile.edit');
+    Route::post('/profile/store', [AdminController::class, 'profile_store'])->name('profile.store');
 });    
 
 

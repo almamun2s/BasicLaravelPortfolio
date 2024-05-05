@@ -27,27 +27,28 @@
 
                     <h4 class="card-title">Edit Profile Details</h4>
 
-                    <form action="" method="post">
+                    <form action="{{ route('profile.store') }}" method="post" enctype="multipart/form-data">
+                        @csrf
                         <div class="row mb-3">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Name</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="text" placeholder="e.g. John Doe"
-                                    value="{{ $adminData->name }}" id="example-text-input">
+                                <input class="form-control" type="text" name="name" placeholder="e.g. John Doe"
+                                    value="{{ $adminData->name }}" >
                             </div>
                         </div>
                         <!-- end row -->
                         <div class="row mb-3">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Email</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="email" placeholder="e.g. john@example.com"
-                                    value="{{ $adminData->email }}" id="example-text-input">
+                                <input class="form-control" type="email" name="email" placeholder="e.g. john@example.com"
+                                    value="{{ $adminData->email }}" >
                             </div>
                         </div>
                         <!-- end row -->
                         <div class="row mb-3">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Profile image</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="file" id="example-text-input">
+                                <input class="form-control" type="file" name="profile_pic" id="image">
                             </div>
                         </div>
                         <!-- end row -->
@@ -55,7 +56,7 @@
                             <label for="example-text-input" class="col-sm-2 col-form-label"></label>
                             <div class="col-sm-10">
                                 <img class="rounded-circle avatar-xl"
-                                    src="{{ asset('backend/assets/images/small/img-5.jpg') }}" alt="Card image cap">
+                                    src="{{ asset('backend/assets/images/small/img-5.jpg') }}" alt="Card image cap" id="showImage">
                             </div>
                         </div>
                         <!-- end row -->
@@ -73,4 +74,16 @@
         </div> <!-- end col -->
     </div>
     <!-- end row -->
+
+    <script>
+        $(document).ready(function(){
+            $('#image').change(function(e){
+                let reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#showImage').attr('src', e.target.result );
+                }
+                reader.readAsDataURL(e.target.files['0']);
+            })
+        });
+    </script>
 @endsection
