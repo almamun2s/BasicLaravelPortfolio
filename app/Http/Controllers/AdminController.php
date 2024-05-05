@@ -20,7 +20,12 @@ class AdminController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        $notification = array(
+            'message' => 'Successfully Logout',
+            'alert-type' => 'success'
+        );
+
+        return redirect('/login')->with($notification);
     }
 
     /**
