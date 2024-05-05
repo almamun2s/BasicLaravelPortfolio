@@ -19,19 +19,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('admin.index');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', function(){
+        return view('admin.index');
+    })->name('dashboard');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+    
+    // All Routes of Admin
+    Route::get('/logout', [AdminController::class, 'destroy'])->name('admin.logout');
+    Route::get('/profile', [AdminController::class, 'profile'])->name('admin.profile');
+});    
 
-
-// All Routes of Admin
-Route::get('/logout', [AdminController::class, 'destroy'])->name('admin.logout');
 
 
 

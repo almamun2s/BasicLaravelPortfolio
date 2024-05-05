@@ -14,7 +14,7 @@
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
-        <div class="main-content">
+        <div class="main-content"  style="margin-top: 5rem;margin-left: 255px">
 
             @yield('admin')
             <!-- End Page-content -->
