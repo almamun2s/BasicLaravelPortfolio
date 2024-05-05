@@ -5,19 +5,19 @@
             <div class="navbar-brand-box">
                 <a href="index.html" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="{{ asset("backend/assets/images/logo-sm.png")}}" alt="logo-sm" height="22">
+                        <img src="{{ asset('backend/assets/images/logo-sm.png') }}" alt="logo-sm" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset("backend/assets/images/logo-dark.png") }}" alt="logo-dark" height="20">
+                        <img src="{{ asset('backend/assets/images/logo-dark.png') }}" alt="logo-dark" height="20">
                     </span>
                 </a>
 
                 <a href="index.html" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="{{ asset("backend/assets/images/logo-sm.png") }}" alt="logo-sm-light" height="22">
+                        <img src="{{ asset('backend/assets/images/logo-sm.png') }}" alt="logo-sm-light" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset("backend/assets/images/logo-light.png") }}" alt="logo-light" height="20">
+                        <img src="{{ asset('backend/assets/images/logo-light.png') }}" alt="logo-light" height="20">
                     </span>
                 </a>
             </div>
@@ -47,19 +47,20 @@
                         <div class="row g-0">
                             <div class="col">
                                 <a class="dropdown-icon-item" href="#">
-                                    <img src="{{ asset("backend/assets/images/brands/github.png") }}" alt="Github">
+                                    <img src="{{ asset('backend/assets/images/brands/github.png') }}" alt="Github">
                                     <span>GitHub</span>
                                 </a>
                             </div>
                             <div class="col">
                                 <a class="dropdown-icon-item" href="#">
-                                    <img src="{{ asset("backend/assets/images/brands/bitbucket.png") }}" alt="bitbucket">
+                                    <img src="{{ asset('backend/assets/images/brands/bitbucket.png') }}"
+                                        alt="bitbucket">
                                     <span>Bitbucket</span>
                                 </a>
                             </div>
                             <div class="col">
                                 <a class="dropdown-icon-item" href="#">
-                                    <img src="{{ asset("backend/assets/images/brands/dribbble.png") }}" alt="dribbble">
+                                    <img src="{{ asset('backend/assets/images/brands/dribbble.png') }}" alt="dribbble">
                                     <span>Dribbble</span>
                                 </a>
                             </div>
@@ -68,19 +69,20 @@
                         <div class="row g-0">
                             <div class="col">
                                 <a class="dropdown-icon-item" href="#">
-                                    <img src="{{ asset("backend/assets/images/brands/dropbox.png") }}" alt="dropbox">
+                                    <img src="{{ asset('backend/assets/images/brands/dropbox.png') }}" alt="dropbox">
                                     <span>Dropbox</span>
                                 </a>
                             </div>
                             <div class="col">
                                 <a class="dropdown-icon-item" href="#">
-                                    <img src="{{ asset("backend/assets/images/brands/mail_chimp.png") }}" alt="mail_chimp">
+                                    <img src="{{ asset('backend/assets/images/brands/mail_chimp.png') }}"
+                                        alt="mail_chimp">
                                     <span>Mail Chimp</span>
                                 </a>
                             </div>
                             <div class="col">
                                 <a class="dropdown-icon-item" href="#">
-                                    <img src="{{ asset("backend/assets/images/brands/slack.png") }}" alt="slack">
+                                    <img src="{{ asset('backend/assets/images/brands/slack.png') }}" alt="slack">
                                     <span>Slack</span>
                                 </a>
                             </div>
@@ -101,15 +103,16 @@
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="rounded-circle header-profile-user" src="{{ Auth::user()->getProfilePic() }}"
                         alt="Header Avatar">
-                    <span class="d-none d-xl-inline-block ms-1">{{Auth::user()->name}} </span>
+                    <span class="d-none d-xl-inline-block ms-1">{{ Auth::user()->name }} </span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <a class="dropdown-item" href="{{ route('admin.profile') }}"><i class="ri-user-line align-middle me-1"></i>
+                    <a class="dropdown-item" href="{{ route('admin.profile') }}"><i
+                            class="ri-user-line align-middle me-1"></i>
                         Profile</a>
-                    <a class="dropdown-item" href="#"><i class="ri-wallet-2-line align-middle me-1"></i> My
-                        Wallet</a>
+                    <a class="dropdown-item" href="{{ route('admin.change_pwd') }}"><i class="ri-wallet-2-line align-middle me-1"></i>Change
+                        Password</a>
                     <a class="dropdown-item d-block" href="#"><span
                             class="badge bg-success float-end mt-1">11</span><i
                             class="ri-settings-2-line align-middle me-1"></i> Settings</a>

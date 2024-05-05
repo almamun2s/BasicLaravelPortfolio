@@ -31,6 +31,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile', [AdminController::class, 'profile'])->name('admin.profile');
     Route::get('/profile/edit', [AdminController::class, 'profile_edit'])->name('profile.edit');
     Route::post('/profile/store', [AdminController::class, 'profile_store'])->name('profile.store');
+    Route::get('/profile/change_pwd', [AdminController::class, 'change_pwd'])->name('admin.change_pwd');
+    Route::post('/profile/change_pwd', [AdminController::class, 'change_pwd_store'])->name('admin.change_pwd');
 });    
 
 

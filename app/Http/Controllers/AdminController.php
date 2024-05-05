@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Validation\Rules\Password;
 
 class AdminController extends Controller
 {
@@ -73,6 +75,32 @@ class AdminController extends Controller
             'alert-type' => 'success'
         );
         return redirect()->route('admin.profile')->with($notification);
+    }
+
+    /**
+     * Show Change Password page
+     */
+    public function change_pwd(){
+        return view('admin.admin_change_pwd');
+    }
+    /**
+     * Show Change Password page
+     */
+    public function change_pwd_store(Request $request){
+        $validated = $request->validate([
+            'current_password' => ['required', 'current_password'],
+            'password' => ['required', Password::defaults(), 'confirmed'],
+        ]);
+
+        $request->user()->update([
+            'password' => Hash::make($validated['password']),
+        ]);
+
+        $notification = array(
+            'message' => 'Password has been changed Successfully',
+            'alert-type' => 'success'
+        );
+        return back()->with($notification);
     }
 
 }
