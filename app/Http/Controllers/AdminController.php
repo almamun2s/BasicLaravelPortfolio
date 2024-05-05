@@ -36,7 +36,8 @@ class AdminController extends Controller
     /**
      * Edit Admin profile
      */
-    public function profile_edit(){
+    public function profile_edit()
+    {
         $id = Auth::user()->id;
         $adminData = User::find($id);
         return view('admin.admin_profile_edit', compact('adminData'));
@@ -45,7 +46,8 @@ class AdminController extends Controller
     /**
      * Store Admin Profile Data
      */
-    public function profile_store(Request $request){
+    public function profile_store(Request $request)
+    {
         $id = Auth::user()->id;
         $adminData = User::find($id);
         $adminData->name = $request->name;
@@ -54,14 +56,18 @@ class AdminController extends Controller
         if ($request->file('profile_pic')) {
             $file = $request->file('profile_pic');
 
-            $fileName = date('YmdHi').$file->getClientOriginalName();
+            $fileName = date('YmdHi') . $file->getClientOriginalName();
             $file->move(public_path('uploads/admin_profile_pic'), $fileName);
 
             $adminData->profile_pic = $fileName;
         }
         $adminData->save();
 
-        return redirect()->route('admin.profile');
+        $notification = array(
+            'message' => 'Admin Prorile Updated Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('admin.profile')->with($notification);
     }
 
 }

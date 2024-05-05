@@ -56,7 +56,7 @@
                             <label for="example-text-input" class="col-sm-2 col-form-label"></label>
                             <div class="col-sm-10">
                                 <img class="rounded-circle avatar-xl"
-                                    src="{{ asset('backend/assets/images/small/img-5.jpg') }}" alt="Card image cap" id="showImage">
+                                    src="{{ $adminData->getProfilePic() }}" alt="Card image cap" id="showImage">
                             </div>
                         </div>
                         <!-- end row -->

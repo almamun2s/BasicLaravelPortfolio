@@ -1,4 +1,4 @@
-@extends('admin.main_layout')
+@extends('admin.body.main_layout')
 @section('title', 'Register')
 @section('body_class', 'auth-body-bg')
 
