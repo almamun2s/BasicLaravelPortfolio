@@ -37,6 +37,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Home Slider Routes
     Route::get('admin/home_slides', [HomeSliderController::class, 'home_slider'])->name('admin.home_slider');
+    Route::post('admin/home_slides', [HomeSliderController::class, 'home_slider_update'])->name('admin.home_slider_update');
 });    
 
 

@@ -27,12 +27,12 @@
 
                     <h4 class="card-title">Edit Home Slide</h4>
 
-                    <form action="" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('admin.home_slider_update') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row mb-3">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Title</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="text" name="name" placeholder="e.g. John Doe"
+                                <input class="form-control" type="text" name="title" placeholder="e.g. John Doe"
                                     value="{{ $data->title }}">
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                         <div class="row mb-3">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Short Title</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="text" name="name" placeholder="e.g. John Doe"
+                                <input class="form-control" type="text" name="short_title" placeholder="e.g. John Doe"
                                     value="{{ $data->short_title }}">
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                         <div class="row mb-3">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Video URL</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="text" name="name" placeholder="e.g. John Doe"
+                                <input class="form-control" type="text" name="video_url" placeholder="e.g. John Doe"
                                     value="{{ $data->video_url }}">
                             </div>
                         </div>
@@ -60,11 +60,12 @@
                             </div>
                         </div>
                         <!-- end row -->
-                        <div class="row mb-3">
+                        <div class="row
+                                    mb-3">
                             <label for="example-text-input" class="col-sm-2 col-form-label"></label>
                             <div class="col-sm-10">
-                                <img class="rounded-circle avatar-xl" src="{{ $data->getHomeImg() }}"
-                                    alt="Card image cap" id="showImage">
+                                <img class="rounded-circle avatar-xl" src="{{ $data->getHomeImg() }}" alt="Card image cap"
+                                    id="showImage">
                             </div>
                         </div>
                         <!-- end row -->

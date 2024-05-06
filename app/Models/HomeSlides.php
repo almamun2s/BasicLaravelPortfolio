@@ -23,7 +23,7 @@ class HomeSlides extends Model
 
     public function getHomeImg(){
         if ($this->home_image) {
-            return url('uploads/home_image/'.$this->profile_pic);
+            return url('uploads/home_image/'.$this->home_image);
         }else {
             return url('uploads/no_image.jpg');
         }
