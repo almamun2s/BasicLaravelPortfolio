@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,8 +34,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/profile/store', [AdminController::class, 'profile_store'])->name('profile.store');
     Route::get('/profile/change_pwd', [AdminController::class, 'change_pwd'])->name('admin.change_pwd');
     Route::post('/profile/change_pwd', [AdminController::class, 'change_pwd_store'])->name('admin.change_pwd');
+
+    // Home Slider Routes
+    Route::get('admin/home_slides', [HomeSliderController::class, 'home_slider'])->name('admin.home_slider');
 });    
 
+
+// // Home Slide Routes
+// Route::controller(HomeSliderController::class)->group(function(){
+    
+// });
 
 
 
