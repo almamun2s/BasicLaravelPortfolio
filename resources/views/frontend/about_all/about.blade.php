@@ -18,7 +18,7 @@
                     </div>
                     <div class="about__exp">
                         <div class="about__exp__icon">
-                            <img src="assets/img/icons/about_icon.png" alt="">
+                            <img src="{{ asset('frontend/assets/img/icons/about_icon.png') }}" alt="">
                         </div>
                         <div class="about__exp__content">
                             <p>{{ $data->short_title }}</p>
@@ -157,7 +157,7 @@
                                     <div class="col-md-6 col-sm-9">
                                         <div class="about__award__item">
                                             <div class="award__logo">
-                                                <img src="assets/img/images/awards_01.png" alt="">
+                                                <img src="{{ asset('frontend/assets/img/images/awards_01.png') }}" alt="">
                                             </div>
                                             <div class="award__content">
                                                 <h5 class="title">Best ux designer award in 2002</h5>
@@ -171,7 +171,7 @@
                                     <div class="col-md-6 col-sm-9">
                                         <div class="about__award__item">
                                             <div class="award__logo">
-                                                <img src="assets/img/images/awards_02.png" alt="">
+                                                <img src="{{ asset('frontend/assets/img/images/awards_02.png') }}" alt="">
                                             </div>
                                             <div class="award__content">
                                                 <h5 class="title">BBA final examination 2001</h5>
@@ -185,7 +185,7 @@
                                     <div class="col-md-6 col-sm-9">
                                         <div class="about__award__item">
                                             <div class="award__logo">
-                                                <img src="assets/img/images/awards_03.png" alt="">
+                                                <img src="{{ asset('frontend/assets/img/images/awards_03.png') }}" alt="">
                                             </div>
                                             <div class="award__content">
                                                 <h5 class="title">User research award 2020</h5>
@@ -199,7 +199,7 @@
                                     <div class="col-md-6 col-sm-9">
                                         <div class="about__award__item">
                                             <div class="award__logo">
-                                                <img src="assets/img/images/awards_04.png" alt="">
+                                                <img src="{{ asset('frontend/assets/img/images/awards_04.png') }}" alt="">
                                             </div>
                                             <div class="award__content">
                                                 <h5 class="title">Dsigning award 2021</h5>
