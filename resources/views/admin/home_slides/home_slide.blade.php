@@ -32,7 +32,7 @@
                         <div class="row mb-3">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Title</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="text" name="title" placeholder="e.g. John Doe"
+                                <input class="form-control" type="text" name="title" placeholder="e.g. I am a Web Developer"
                                     value="{{ $data->title }}">
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                         <div class="row mb-3">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Short Title</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="text" name="short_title" placeholder="e.g. John Doe"
+                                <input class="form-control" type="text" name="short_title" placeholder="e.g. I am a Full stack Web Developer."
                                     value="{{ $data->short_title }}">
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                         <div class="row mb-3">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Video URL</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="text" name="video_url" placeholder="e.g. John Doe"
+                                <input class="form-control" type="text" name="video_url" placeholder="https://www.youtube.com/watch?v=XHOmBV4js_E"
                                     value="{{ $data->video_url }}">
                             </div>
                         </div>
