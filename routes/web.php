@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Home\AboutPageController;
 use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +39,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Home Slider Routes
     Route::get('admin/home_slides', [HomeSliderController::class, 'home_slider'])->name('admin.home_slider');
     Route::post('admin/home_slides', [HomeSliderController::class, 'home_slider_update'])->name('admin.home_slider_update');
+    // Home Slider Routes
+    Route::get('admin/about_page', [AboutPageController::class, 'about_page'])->name('admin.about_page');
+    Route::post('admin/about_page', [AboutPageController::class, 'about_page_update'])->name('admin.about_page_update');
 });    
 
 
