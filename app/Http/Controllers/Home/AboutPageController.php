@@ -55,7 +55,8 @@ class AboutPageController extends Controller
      */
     public function about_multi_image()
     {
-        return view('admin.about_page.multi_image');
+        $images = MultiImage::all();
+        return view('admin.about_page.multi_image', compact('images'));
     }
 
 
@@ -73,7 +74,7 @@ class AboutPageController extends Controller
             Image::make($image)->resize(220, 220)->save('uploads/multiple_images/' . $fileName);
             MultiImage::insert([
                 'multi_images' => $fileName,
-                'created_at'    => Carbon::now()
+                'created_at' => Carbon::now()
             ]);
         }
 
@@ -83,4 +84,37 @@ class AboutPageController extends Controller
         );
         return redirect()->back()->with($notification);
     }
+
+
+    /**
+     * Showing image edit page
+     *
+     * @param integer $id
+     */
+    public function image_edit(int $id)
+    {
+        // This function is currently not using
+        // I may update this later 
+    }
+
+
+    /**
+     * Delete Single Image
+     *
+     * @param integer $id
+     */
+    public function image_delete(int $id)
+    {
+        $data = MultiImage::findOrFail($id);
+        $img = $data->multi_images;
+        unlink('uploads/multiple_images/'. $img );
+        $data->delete();
+
+        $notification = array(
+            'message' => 'Image Deleted Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
+
 }
