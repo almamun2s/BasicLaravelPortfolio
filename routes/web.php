@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+// Routes for Frontend
 Route::get('/', function () {
     return view('frontend.index');
 })->name('home');
@@ -24,6 +26,8 @@ Route::get('/about', function () {
     return view('frontend.about');
 })->name('about');
 
+
+// Routes for Backend/Dashboard
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function(){
         return view('admin.index');
@@ -42,9 +46,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Home Slider Routes
     Route::get('admin/home_slides', [HomeSliderController::class, 'home_slider'])->name('admin.home_slider');
     Route::post('admin/home_slides', [HomeSliderController::class, 'home_slider_update'])->name('admin.home_slider_update');
-    // Home Slider Routes
+    // About Section Routes
     Route::get('admin/about_page', [AboutPageController::class, 'about_page'])->name('admin.about_page');
     Route::post('admin/about_page', [AboutPageController::class, 'about_page_update'])->name('admin.about_page_update');
+    Route::get('admin/about_multi_image', [AboutPageController::class, 'about_multi_image'])->name('admin.about_multi_image');
+    Route::post('admin/about_multi_image', [AboutPageController::class, 'about_multi_image_update'])->name('admin.about_multi_image_update');
 });    
 
 

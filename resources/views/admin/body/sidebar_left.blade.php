@@ -34,7 +34,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('admin.about_page') }}">About Page</a></li>
-                        {{-- <li><a href="email-read.html">Read Email</a></li> --}}
+                        <li><a href="{{ route('admin.about_multi_image') }}">About Multi Images</a></li>
                     </ul>
                 </li>
 
