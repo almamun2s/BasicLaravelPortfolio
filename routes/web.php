@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Home\AboutPageController;
 use App\Http\Controllers\Home\HomeSliderController;
+use App\Http\Controllers\Home\PortfolioController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -55,6 +56,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Route::get('admin/about_multi_image/edit/{id}', [AboutPageController::class, 'image_edit'])->name('admin.image_edit');
     Route::get('admin/about_multi_image/delete/{id}', [AboutPageController::class, 'image_delete'])->name('admin.image_delete');
+
+
+    // Portfolio Section Routes
+    Route::get('admin/all_portfolio', [PortfolioController::class, 'portfolio_page'])->name('admin.portfolio_page');
+    Route::post('admin/add_portfolio', [PortfolioController::class, 'store_portfolio'])->name('admin.add_portfolio');
 });    
 
 

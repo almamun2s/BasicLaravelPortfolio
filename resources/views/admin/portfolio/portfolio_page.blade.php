@@ -1,12 +1,12 @@
 @extends('admin.admin_master')
-@section('title', 'Multi Image')
+@section('title', 'Portfolio Page')
 
 @section('admin')
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0">Images</h4>
+                <h4 class="mb-sm-0">Edit About Page</h4>
 
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
@@ -24,20 +24,43 @@
             <div class="card">
                 <div class="card-body">
 
-                    <h4 class="card-title">Add Images</h4>
+                    <h4 class="card-title">Add Portfolio</h4>
 
-                    <form action="{{ route('admin.about_multi_image_update') }}" method="post"
+                    <form action="{{ route('admin.add_portfolio') }}" method="post"
                         enctype="multipart/form-data">
                         @csrf
                         <div class="row mb-3">
-                            <label for="example-text-input" class="col-sm-2 col-form-label">About image</label>
+                            <label for="example-text-input" class="col-sm-2 col-form-label">Name</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="file" multiple name="multi_images[]" id="image">
+                                <input class="form-control" type="text" name="name" placeholder="Web Development">
+                            </div>
+                        </div>
+                        <!-- end row -->
+                        <div class="row mb-3">
+                            <label for="example-text-input" class="col-sm-2 col-form-label">Title</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" name="title"
+                                    placeholder="Database Management Syetem">
+                            </div>
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row mb-3">
+                            <label for="example-text-input" class="col-sm-2 col-form-label">Description</label>
+                            <div class="col-sm-10">
+                                <textarea name="description" id="elm1"></textarea>
+                            </div>
+                        </div>
+                        <!-- end row -->
+                        <div class="row mb-3">
+                            <label for="example-text-input" class="col-sm-2 col-form-label">Image</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="file" name="image" id="image">
                             </div>
                         </div>
                         <!-- end row -->
                         <div class="row
-                    mb-3">
+                        mb-3">
                             <label for="example-text-input" class="col-sm-2 col-form-label"></label>
                             <div class="col-sm-10">
                                 <img class="rounded-circle avatar-xl" src="" alt="Card image cap" id="showImage">
@@ -48,7 +71,7 @@
                             <label for="example-text-input" class="col-sm-2 col-form-label"></label>
                             <div class="col-sm-10">
                                 <input class="btn btn-primary waves-effect waves-light" type="submit"
-                                    value="Upload Multiple Images">
+                                    value="Add Portfolio">
                             </div>
                         </div>
                         <!-- end row -->
@@ -72,7 +95,9 @@
                         <thead>
                             <tr>
                                 <th>Sl</th>
-                                <th>About Image</th>
+                                <th>Name</th>
+                                <th>Title</th>
+                                <th>Image</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -80,14 +105,16 @@
 
                         <tbody>
                             @php($i = 1)
-                            @foreach ($images as $image)
+                            @foreach ($portfolios as $portfolio)
                                 <tr>
                                     <td>{{ $i++ }} </td>
-                                    <td><img src="{{ $image->getMultiImg() }} " width="60px" height="50px"></td>
+                                    <td>{{ $portfolio->name }} </td>
+                                    <td>{{ $portfolio->title }} </td>
+                                    <td><img src="{{ $portfolio->getImg() }} " width="60px" height="50px"></td>
                                     <td>
                                         {{-- <a href="{{ route('admin.image_edit', $image->id) }}" class="btn btn-info sm" title="Edit Data"><i class="fas fa-edit"></i></a> --}}
-                                        <a href="{{ route('admin.image_delete', $image->id) }}" id="delete" class="btn btn-danger sm" title="Delete Data"><i
-                                                class="fas fa-trash"></i></a>
+                                        {{-- <a href="{{ route('admin.image_delete', $image->id) }}" id="delete" class="btn btn-danger sm" title="Delete Data"><i --}}
+                                        {{-- class="fas fa-trash"></i></a> --}}
                                     </td>
                                 </tr>
                             @endforeach
@@ -98,5 +125,4 @@
             </div>
         </div> <!-- end col -->
     </div> <!-- end row -->
-    
 @endsection
