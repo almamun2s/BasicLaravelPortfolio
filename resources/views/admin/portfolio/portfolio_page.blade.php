@@ -26,13 +26,15 @@
 
                     <h4 class="card-title">Add Portfolio</h4>
 
-                    <form action="{{ route('admin.add_portfolio') }}" method="post"
-                        enctype="multipart/form-data">
+                    <form action="{{ route('admin.add_portfolio') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row mb-3">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Name</label>
                             <div class="col-sm-10">
                                 <input class="form-control" type="text" name="name" placeholder="Web Development">
+                                @error('name')
+                                    <span class="text-danger">{{ $message }} </span>
+                                @enderror
                             </div>
                         </div>
                         <!-- end row -->
@@ -41,6 +43,9 @@
                             <div class="col-sm-10">
                                 <input class="form-control" type="text" name="title"
                                     placeholder="Database Management Syetem">
+                                @error('title')
+                                    <span class="text-danger">{{ $message }} </span>
+                                @enderror
                             </div>
                         </div>
                         <!-- end row -->
@@ -49,6 +54,9 @@
                             <label for="example-text-input" class="col-sm-2 col-form-label">Description</label>
                             <div class="col-sm-10">
                                 <textarea name="description" id="elm1"></textarea>
+                                @error('description')
+                                    <span class="text-danger">{{ $message }} </span>
+                                @enderror
                             </div>
                         </div>
                         <!-- end row -->
@@ -56,6 +64,7 @@
                             <label for="example-text-input" class="col-sm-2 col-form-label">Image</label>
                             <div class="col-sm-10">
                                 <input class="form-control" type="file" name="image" id="image">
+                                
                             </div>
                         </div>
                         <!-- end row -->
