@@ -108,6 +108,17 @@ class PortfolioController extends Controller
      */
     public function delete_portfolio(int $id)
     {
+        $data = Portfolio::findOrFail($id);
+        $img = $data->image;
+        if ($img != null) {
+            unlink('uploads/portfolio/' . $img);
+        }
+        $data->delete();
 
+        $notification = array(
+            'message' => 'Portfolio Deleted',
+            'alert-type' => 'error'
+        );
+        return redirect()->back()->with($notification);
     }
 }

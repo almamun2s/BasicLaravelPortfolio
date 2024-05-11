@@ -107,12 +107,14 @@ class AboutPageController extends Controller
     {
         $data = MultiImage::findOrFail($id);
         $img = $data->multi_images;
-        unlink('uploads/multiple_images/'. $img );
+        if ($img != null) {
+            unlink('uploads/multiple_images/' . $img);
+        }
         $data->delete();
 
         $notification = array(
-            'message' => 'Image Deleted Successfully',
-            'alert-type' => 'success'
+            'message' => 'Image Deleted',
+            'alert-type' => 'error'
         );
         return redirect()->back()->with($notification);
     }
