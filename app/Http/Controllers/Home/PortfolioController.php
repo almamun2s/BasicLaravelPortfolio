@@ -79,6 +79,16 @@ class PortfolioController extends Controller
     public function update_portfolio(Request $request, int $id)
     {
         $portfolio = Portfolio::findOrFail($id);
+
+        $request->validate([
+            'name' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+        ], [
+            'name.required' => 'Please provide Portfolio name',
+            'title.required' => 'Please provide Portfolio title',
+        ]);
+
         $portfolio->name = $request->name;
         $portfolio->title = $request->title;
         $portfolio->description = $request->description;

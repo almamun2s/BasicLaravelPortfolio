@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Home\AboutPageController;
+use App\Http\Controllers\Home\BlogCategoryController;
 use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\Home\PortfolioController;
 use App\Http\Controllers\ProfileController;
@@ -65,6 +66,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('admin/edit_portfolio/{id}', [PortfolioController::class, 'edit_portfolio'])->name('admin.edit_portfolio');
     Route::post('admin/edit_portfolio/{id}', [PortfolioController::class, 'update_portfolio'])->name('admin.update_portfolio');
     Route::get('admin/delete_portfolio/{id}', [PortfolioController::class, 'delete_portfolio'])->name('admin.delete_portfolio');
+
+    // Blog section Routes
+    Route::get('admin/blog/category', [BlogCategoryController::class, 'blog_category'])->name('admin.blog_category');
+    Route::post('admin/blog/add_category', [BlogCategoryController::class, 'store_blog_category'])->name('admin.add_blog_category');
+    Route::get('admin/blog/edit_category/{id}', [BlogCategoryController::class, 'edit_blog_category'])->name('admin.edit_blog_category');
+    Route::post('admin/blog/edit_category/{id}', [BlogCategoryController::class, 'update_blog_category'])->name('admin.update_blog_category');
+    Route::get('admin/blog/delete_category/{id}', [BlogCategoryController::class, 'destroy_blog_category'])->name('admin.delete_blog_category');
 });    
 
 
