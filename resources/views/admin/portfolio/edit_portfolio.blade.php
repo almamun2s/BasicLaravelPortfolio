@@ -1,5 +1,5 @@
 @extends('admin.admin_master')
-@section('title', 'Portfolio Page')
+@section('title', 'Edit Portfolio Page')
 
 @section('admin')
     <!-- start page title -->
@@ -24,14 +24,14 @@
             <div class="card">
                 <div class="card-body">
 
-                    <h4 class="card-title">Add Portfolio</h4>
+                    <h4 class="card-title">Edit Portfolio</h4>
 
-                    <form action="{{ route('admin.add_portfolio') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('admin.update_portfolio', $portfolio->id ) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row mb-3">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Name</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="text" name="name" placeholder="Web Development">
+                                <input class="form-control" type="text" value="{{ $portfolio->name }}" name="name" placeholder="Web Development">
                                 @error('name')
                                     <span class="text-danger">{{ $message }} </span>
                                 @enderror
@@ -41,7 +41,7 @@
                         <div class="row mb-3">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Title</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="text" name="title"
+                                <input class="form-control" type="text" value="{{ $portfolio->title }}" name="title"
                                     placeholder="Database Management Syetem">
                                 @error('title')
                                     <span class="text-danger">{{ $message }} </span>
@@ -53,7 +53,7 @@
                         <div class="row mb-3">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Description</label>
                             <div class="col-sm-10">
-                                <textarea name="description" id="elm1"></textarea>
+                                <textarea name="description" id="elm1">{{ $portfolio->description }}</textarea>
                                 @error('description')
                                     <span class="text-danger">{{ $message }} </span>
                                 @enderror
@@ -72,7 +72,7 @@
                         mb-3">
                             <label for="example-text-input" class="col-sm-2 col-form-label"></label>
                             <div class="col-sm-10">
-                                <img class="avatar-xl" src="{{ asset('uploads/no_image.jpg') }}" alt="Card image cap" id="showImage">
+                                <img class="avatar-xl" src="{{ $portfolio->getImg() }}" alt="Card image cap" id="showImage">
                             </div>
                         </div>
                         <!-- end row -->
@@ -80,7 +80,7 @@
                             <label for="example-text-input" class="col-sm-2 col-form-label"></label>
                             <div class="col-sm-10">
                                 <input class="btn btn-primary waves-effect waves-light" type="submit"
-                                    value="Add Portfolio">
+                                    value="Update Portfolio">
                             </div>
                         </div>
                         <!-- end row -->
@@ -90,48 +90,4 @@
         </div> <!-- end col -->
     </div>
     <!-- end row -->
-
-
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-
-                    <h4 class="card-title">All Portfolio</h4>
-
-                    <table id="datatable" class="table table-bordered dt-responsive nowrap"
-                        style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                        <thead>
-                            <tr>
-                                <th>Sl</th>
-                                <th>Name</th>
-                                <th>Title</th>
-                                <th>Image</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-
-
-                        <tbody>
-                            @php($i = 1)
-                            @foreach ($portfolios as $portfolio)
-                                <tr>
-                                    <td>{{ $i++ }} </td>
-                                    <td>{{ $portfolio->name }} </td>
-                                    <td>{{ $portfolio->title }} </td>
-                                    <td><img src="{{ $portfolio->getImg() }} " width="60px" height="50px"></td>
-                                    <td>
-                                        <a href="{{ route('admin.edit_portfolio', $portfolio->id ) }}" class="btn btn-info sm" title="Edit Data"><i class="fas fa-edit"></i></a>
-                                        <a href="{{ route('admin.delete_portfolio', $portfolio->id ) }}" id="delete" class="btn btn-danger sm" title="Delete Data"><i
-                                        class="fas fa-trash"></i></a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-
-                </div>
-            </div>
-        </div> <!-- end col -->
-    </div> <!-- end row -->
 @endsection

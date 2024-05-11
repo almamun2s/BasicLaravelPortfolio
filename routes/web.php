@@ -61,6 +61,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Portfolio Section Routes
     Route::get('admin/all_portfolio', [PortfolioController::class, 'portfolio_page'])->name('admin.portfolio_page');
     Route::post('admin/add_portfolio', [PortfolioController::class, 'store_portfolio'])->name('admin.add_portfolio');
+    Route::get('admin/edit_portfolio/{id}', [PortfolioController::class, 'edit_portfolio'])->name('admin.edit_portfolio');
+    Route::post('admin/edit_portfolio/{id}', [PortfolioController::class, 'update_portfolio'])->name('admin.update_portfolio');
+    Route::get('admin/delete_portfolio/{id}', [PortfolioController::class, 'delete_portfolio'])->name('admin.delete_portfolio');
 });    
 
 

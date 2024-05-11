@@ -43,7 +43,6 @@ class PortfolioController extends Controller
 
             $fileName = hexdec(uniqid()) . '.' . $file->getClientOriginalExtension();
             Image::make($file)->resize(636, 852)->save('uploads/portfolio/' . $fileName);
-            // $data->image = $fileName;
         }
         Portfolio::insert([
             'name' => $request->name,
@@ -58,5 +57,57 @@ class PortfolioController extends Controller
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
+    }
+
+    /**
+     * Showing Edit Portfolio page
+     *
+     * @param integer $id
+     */
+    public function edit_portfolio(int $id)
+    {
+        $portfolio = Portfolio::findOrFail($id);
+
+        return view('admin.portfolio.edit_portfolio', compact('portfolio'));
+    }
+
+    /**
+     * Update portfolio
+     *
+     * @param Request $request
+     * @param integer $id
+     */
+    public function update_portfolio(Request $request, int $id)
+    {
+        $portfolio = Portfolio::findOrFail($id);
+        $portfolio->name = $request->name;
+        $portfolio->title = $request->title;
+        $portfolio->description = $request->description;
+
+        if ($request->file('image')) {
+            $file = $request->file('image');
+
+            $fileName = hexdec(uniqid()) . '.' . $file->getClientOriginalExtension();
+            Image::make($file)->resize(636, 852)->save('uploads/portfolio/' . $fileName);
+            $portfolio->image = $fileName;
+        }
+
+        $portfolio->save();
+
+        $notification = array(
+            'message' => 'Portfolio Updated Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
+
+    /**
+     * Delete a particular portfolio
+     *
+     * @param integer $id
+     */
+    public function delete_portfolio(int $id)
+    {
+
     }
 }
