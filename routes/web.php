@@ -26,6 +26,7 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('frontend.about');
 })->name('about');
+Route::get('/portfolio/{id}', [PortfolioController::class, 'show_portfolio'])->name('single_portfolio');
 
 
 // Routes for Backend/Dashboard
@@ -66,11 +67,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('admin/delete_portfolio/{id}', [PortfolioController::class, 'delete_portfolio'])->name('admin.delete_portfolio');
 });    
 
-
-// // Home Slide Routes
-// Route::controller(HomeSliderController::class)->group(function(){
-    
-// });
 
 
 

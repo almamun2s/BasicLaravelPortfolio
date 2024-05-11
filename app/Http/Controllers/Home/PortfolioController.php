@@ -36,13 +36,12 @@ class PortfolioController extends Controller
             'title.required' => 'Please provide Portfolio title',
         ]);
 
-        // dd($request->name);
         $fileName = null;
         if ($request->file('image')) {
             $file = $request->file('image');
 
             $fileName = hexdec(uniqid()) . '.' . $file->getClientOriginalExtension();
-            Image::make($file)->resize(636, 852)->save('uploads/portfolio/' . $fileName);
+            Image::make($file)->resize(1020, 519)->save('uploads/portfolio/' . $fileName);
         }
         Portfolio::insert([
             'name' => $request->name,
@@ -88,7 +87,7 @@ class PortfolioController extends Controller
             $file = $request->file('image');
 
             $fileName = hexdec(uniqid()) . '.' . $file->getClientOriginalExtension();
-            Image::make($file)->resize(636, 852)->save('uploads/portfolio/' . $fileName);
+            Image::make($file)->resize(1020, 519)->save('uploads/portfolio/' . $fileName);
             $portfolio->image = $fileName;
         }
 
@@ -120,5 +119,16 @@ class PortfolioController extends Controller
             'alert-type' => 'error'
         );
         return redirect()->back()->with($notification);
+    }
+
+    /**
+     * Showing single Portfolio 
+     * @param integer $id
+     */
+    public function show_portfolio(int $id)
+    {
+        $portfolio = Portfolio::findOrFail($id);
+
+        return view('frontend.portfolio_details', compact('portfolio'));
     }
 }
