@@ -4,7 +4,7 @@
 
 @section('main_body')
 
-    @include('frontend.body.breadcrumb', ['title' => 'Case Details' ])
+    @include('frontend.body.breadcrumb', ['title' => $portfolio->name ])
 
     <!-- portfolio-details-area -->
     <section class="services__details">
