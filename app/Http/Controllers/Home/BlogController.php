@@ -51,7 +51,6 @@ class BlogController extends Controller
             $fileName = hexdec(uniqid()) . '.' . $file->getClientOriginalExtension();
             Image::make($file)->resize(430, 327)->save('uploads/blog/' . $fileName);
         }
-        // dd($request->title, $request->image, $fileName);
         Blog::insert([
             'category_id' => $request->category,
             'title' => $request->title,
@@ -81,7 +80,9 @@ class BlogController extends Controller
      */
     public function edit(string $id)
     {
-        dd('Edit');
+        $blog = Blog::find($id);
+        $categories = BlogCategory::orderBy('name', 'ASC')->get();
+        return view('admin.blog.blog_edit', compact(['blog', 'categories']));
     }
 
     /**
@@ -89,7 +90,38 @@ class BlogController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        dd('update');
+        $blog = Blog::findOrFail($id);
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'category' => 'required',
+        ], [
+            'title.required' => 'Please provide Blog title',
+            'description.required' => 'Description should not be empty',
+            'category.required' => 'Please select a category',
+        ]);
+
+        $blog->title = $request->title;
+        $blog->description = $request->description;
+        $blog->category_id = $request->category;
+        $blog->tags = $request->tags;
+
+        if ($request->file('image')) {
+            $file = $request->file('image');
+
+            $fileName = hexdec(uniqid()) . '.' . $file->getClientOriginalExtension();
+            Image::make($file)->resize(430, 327)->save('uploads/blog/' . $fileName);
+            $blog->image = $fileName;
+        }
+
+
+        $blog->save();
+
+        $notification = array(
+            'message' => 'Blog Updated Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     }
 
     /**
@@ -97,6 +129,17 @@ class BlogController extends Controller
      */
     public function destroy(string $id)
     {
-        dd('Destroy');
+        $data = Blog::findOrFail($id);
+        $img = $data->image;
+        if ($img != null) {
+            unlink('uploads/blog/' . $img);
+        }
+        $data->delete();
+
+        $notification = array(
+            'message' => 'Blog Deleted',
+            'alert-type' => 'error'
+        );
+        return redirect()->back()->with($notification);
     }
 }

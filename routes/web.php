@@ -75,7 +75,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('admin/blog/edit_category/{id}', [BlogCategoryController::class, 'update_blog_category'])->name('admin.update_blog_category');
     Route::get('admin/blog/delete_category/{id}', [BlogCategoryController::class, 'destroy_blog_category'])->name('admin.delete_blog_category');
 
-    Route::resource('admin/blog', BlogController::class)->except(['create', 'destroy']);
+    Route::resource('admin/blog', BlogController::class)->except(['create','show', 'destroy']);
+    Route::get('admin/blog_delete/{id}', [BlogController::class , 'destroy'])->name('admin.delete_blog');
 
 });    
 
