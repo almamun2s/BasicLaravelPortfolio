@@ -97,7 +97,7 @@
                         <div class="row mb-3">
                             <label for="example-text-input" class="col-sm-2 col-form-label"></label>
                             <div class="col-sm-10">
-                                <input class="btn btn-primary waves-effect waves-light" type="submit" value="Add Blog">
+                                <input class="btn btn-primary waves-effect waves-light" type="submit" value="Update Blog">
                             </div>
                         </div>
                         <!-- end row -->

@@ -68,11 +68,15 @@ class BlogController extends Controller
     }
 
     /**
-     * Display the specified Blog.
+     * Display the specified Blog. This is for Frontend.
      */
     public function show(string $id)
     {
-        dd('Show');
+        $blog = Blog::findOrFail($id );
+        $allBlogs = Blog::latest()->limit(5)->get();
+        $categories = BlogCategory::orderBy('name', 'ASC')->get();
+
+        return view('frontend.blog_details', compact(['blog', 'allBlogs', 'categories']));
     }
 
     /**
