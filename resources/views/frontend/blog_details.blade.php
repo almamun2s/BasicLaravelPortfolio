@@ -78,7 +78,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="comment comment__wrap">
+                        {{-- <div class="comment comment__wrap">
                             <div class="comment__title">
                                 <h4 class="title">(04) Comment</h4>
                             </div>
@@ -150,8 +150,8 @@
                                     </div>
                                 </li>
                             </ul>
-                        </div>
-                        <div class="comment__form">
+                        </div> --}}
+                        {{-- <div class="comment__form">
                             <div class="comment__title">
                                 <h4 class="title">Write your comment</h4>
                             </div>
@@ -178,7 +178,7 @@
                                 </div>
                                 <button type="submit" class="btn">post a comment</button>
                             </form>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -189,36 +189,13 @@
                                 <button type="submit"><i class="fal fa-search"></i></button>
                             </form>
                         </div>
-                        <div class="widget">
-                            <h4 class="widget-title">Recent Blog</h4>
-                            <ul class="rc__post">
 
-                                @foreach ($allBlogs as $blog)
-                                    <li class="rc__post__item">
-                                        <div class="rc__post__thumb">
-                                            <a href="blog-details.html"><img src="{{ $blog->getImg() }}"
-                                                    alt=""></a>
-                                        </div>
-                                        <div class="rc__post__content">
-                                            <h5 class="title"><a href="blog-details.html">{{ $blog->title }} </a></h5>
-                                            <span class="post-date"><i
-                                                    class="fal fa-calendar-alt"></i>{{ $blog->created_at->diffForHumans() }}
-                                            </span>
-                                        </div>
-                                    </li>
-                                @endforeach
+                        @include('frontend.blog_all.recent_blog')
 
-                            </ul>
-                        </div>
-                        <div class="widget">
-                            <h4 class="widget-title">Categories</h4>
-                            <ul class="sidebar__cat">
-                                @foreach ($categories as $category)
-                                    <li class="sidebar__cat__item"><a href="blog.html">{{ $category->name }} (6)</a></li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        <div class="widget">
+                        @include('frontend.blog_all.categories')
+
+                        
+                        {{-- <div class="widget">
                             <h4 class="widget-title">Recent Comment</h4>
                             <ul class="sidebar__comment">
                                 <li class="sidebar__comment__item">
@@ -258,7 +235,7 @@
                                 <li><a href="blog.html">landing page</a></li>
                                 <li><a href="blog.html">data</a></li>
                             </ul>
-                        </div>
+                        </div> --}}
                     </aside>
                 </div>
             </div>

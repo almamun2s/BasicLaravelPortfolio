@@ -31,6 +31,8 @@ class BlogController extends Controller
 
     /**
      * Store a newly created Blog in storage.
+     *
+     * @param Request $request
      */
     public function store(Request $request)
     {
@@ -69,10 +71,12 @@ class BlogController extends Controller
 
     /**
      * Display the specified Blog. This is for Frontend.
+     *
+     * @param string $id
      */
     public function show(string $id)
     {
-        $blog = Blog::findOrFail($id );
+        $blog = Blog::findOrFail($id);
         $allBlogs = Blog::latest()->limit(5)->get();
         $categories = BlogCategory::orderBy('name', 'ASC')->get();
 
@@ -81,6 +85,7 @@ class BlogController extends Controller
 
     /**
      * Show the form for editing the specified Blog.
+     * @param string $id
      */
     public function edit(string $id)
     {
@@ -91,6 +96,9 @@ class BlogController extends Controller
 
     /**
      * Update the specified Blog in storage.
+     * 
+     * @param Request $request
+     * @param string $id
      */
     public function update(Request $request, string $id)
     {
@@ -130,6 +138,8 @@ class BlogController extends Controller
 
     /**
      * Remove the specified Blog from storage.
+     * 
+     * @param string $id
      */
     public function destroy(string $id)
     {
@@ -145,5 +155,35 @@ class BlogController extends Controller
             'alert-type' => 'error'
         );
         return redirect()->back()->with($notification);
+    }
+
+
+    /**
+     * Showing all blogs to frontend
+     */
+    public function all_blogs()
+    {
+        $blogs = Blog::get();
+        $allBlogs = Blog::latest()->limit(5)->get();
+        $categories = BlogCategory::orderBy('name', 'ASC')->get();
+        $pageTitle = "Blogs";
+
+        return view('frontend.blogs', compact(['blogs', 'allBlogs', 'categories', 'pageTitle']));
+    }
+
+
+    /**
+     * Showing blogs by Category
+     * 
+     * @param integer $id 
+     */
+    public function all_blogs_by_category(int $id)
+    {
+        $blogs = Blog::where('category_id', $id)->get();
+        $allBlogs = Blog::latest()->limit(5)->get();
+        $categories = BlogCategory::orderBy('name', 'ASC')->get();
+        $pageTitle = BlogCategory::find($id)->name ;
+
+        return view('frontend.blogs', compact(['blogs', 'allBlogs', 'categories', 'pageTitle']));
     }
 }
