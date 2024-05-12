@@ -53,6 +53,7 @@
                         <span>Blog Page Setup</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ url('admin/blog') }}">Blog</a></li>
                         <li><a href="{{ route('admin.blog_category') }}">Category</a></li>
                     </ul>
                 </li>

@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Home\AboutPageController;
-use App\Http\Controllers\Home\BlogCategoryController;
-use App\Http\Controllers\Home\HomeSliderController;
-use App\Http\Controllers\Home\PortfolioController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Home\BlogController;
+use App\Http\Controllers\Home\AboutPageController;
+use App\Http\Controllers\Home\PortfolioController;
+use App\Http\Controllers\Home\HomeSliderController;
+use App\Http\Controllers\Home\BlogCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +74,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('admin/blog/edit_category/{id}', [BlogCategoryController::class, 'edit_blog_category'])->name('admin.edit_blog_category');
     Route::post('admin/blog/edit_category/{id}', [BlogCategoryController::class, 'update_blog_category'])->name('admin.update_blog_category');
     Route::get('admin/blog/delete_category/{id}', [BlogCategoryController::class, 'destroy_blog_category'])->name('admin.delete_blog_category');
+
+    Route::resource('admin/blog', BlogController::class)->except(['create', 'destroy']);
+
 });    
 
 

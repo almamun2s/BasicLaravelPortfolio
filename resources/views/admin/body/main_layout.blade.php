@@ -36,6 +36,17 @@
     <!-- Toastr CSS-->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
+    <!-- Tags Input CSS-->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.css">
+    <style type="text/css">
+        .bootstrap-tagsinput .tag {
+            margin-right: 2px;
+            color: #0f9cf3;
+            font-weight: 700px;
+        }
+    </style>
+
 </head>
 
 <body data-topbar="light" class="@yield('body_class')">
@@ -87,6 +98,10 @@
 
     <!-- Datatable init js -->
     <script src="{{ asset('backend/assets/js/pages/datatables.init.js') }}"></script>
+
+    <!-- Tags input js -->
+    <script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
