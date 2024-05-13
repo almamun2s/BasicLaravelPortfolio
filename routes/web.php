@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FooterController;
+use App\Http\Controllers\Home\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
@@ -22,7 +23,7 @@ use App\Http\Controllers\Home\BlogCategoryController;
 */
 
 
-// Routes for Frontend
+// ================================= Routes for Frontend =================================
 Route::get('/', function () {
     return view('frontend.index');
 })->name('home');
@@ -34,15 +35,21 @@ Route::get('/blogs', [BlogController::class, 'all_blogs'])->name('blogs');
 Route::get('/blogs/category/{id}', [BlogController::class, 'all_blogs_by_category'])->name('category_blogs');
 Route::get('/blog/{id}', [BlogController::class, 'show'])->name('single_blog');
 
+// Routes for Contacts 
+Route::controller( ContactController::class)->group( function(){
+    Route::get('/contact', 'index')->name('contact');
+    Route::post('/contact', 'store')->name('contact.insert');
+});
 
-// Routes for Backend/Dashboard
+
+// ================================= Routes for Backend/Dashboard =================================
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', function(){
+    Route::get('/dashboard', function () {
         return view('admin.index');
     })->name('dashboard');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    
+
     // All Routes of Admin
     Route::get('/logout', [AdminController::class, 'destroy'])->name('admin.logout');
     Route::get('/profile', [AdminController::class, 'profile'])->name('admin.profile');
@@ -64,7 +71,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Route::get('admin/about_multi_image/edit/{id}', [AboutPageController::class, 'image_edit'])->name('admin.image_edit');
     Route::get('admin/about_multi_image/delete/{id}', [AboutPageController::class, 'image_delete'])->name('admin.image_delete');
 
-
     // Portfolio Section Routes
     Route::get('admin/all_portfolio', [PortfolioController::class, 'portfolio_page'])->name('admin.portfolio_page');
     Route::post('admin/add_portfolio', [PortfolioController::class, 'store_portfolio'])->name('admin.add_portfolio');
@@ -79,16 +85,19 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('admin/blog/edit_category/{id}', [BlogCategoryController::class, 'update_blog_category'])->name('admin.update_blog_category');
     Route::get('admin/blog/delete_category/{id}', [BlogCategoryController::class, 'destroy_blog_category'])->name('admin.delete_blog_category');
 
-    Route::resource('admin/blog', BlogController::class)->except(['create','show', 'destroy']);
-    Route::get('admin/blog_delete/{id}', [BlogController::class , 'destroy'])->name('admin.delete_blog');
-
+    Route::resource('admin/blog', BlogController::class)->except(['create', 'show', 'destroy']);
+    Route::get('admin/blog_delete/{id}', [BlogController::class, 'destroy'])->name('admin.delete_blog');
 
     // Footer section Routes 
     Route::get('admin/footer', [FooterController::class, 'edit_footer'])->name('admin.footer');
     Route::post('admin/footer', [FooterController::class, 'update_footer'])->name('admin.footer_update');
-});    
+
+    // Contact Routes
+    Route::get('admin/contact', [ ContactController::class, 'show_message'])->name('admin.contact');
+    Route::get('admin/delete_message/{id}', [ ContactController::class, 'delete_message'])->name('admin.delete_message');
+});
 
 
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

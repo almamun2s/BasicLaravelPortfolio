@@ -15,6 +15,13 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="{{ route('admin.contact') }}" class="waves-effect">
+                        <i class="ri-cellphone-line"></i><span class="badge rounded-pill bg-success float-end">3</span>
+                        <span>Contact</span>
+                    </a>
+                </li>
+
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
