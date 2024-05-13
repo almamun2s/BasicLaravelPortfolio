@@ -27,7 +27,7 @@
             @endforeach
         </div>
         <div class="blog__button text-center">
-            <a href="blog.html" class="btn">more blog</a>
+            <a href="{{ route('blogs') }}" class="btn">more blog</a>
         </div>
     </div>
 </section>

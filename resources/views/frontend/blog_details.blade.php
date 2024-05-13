@@ -28,10 +28,12 @@
                             <ul class="blog__details__tag">
                                 <li class="title">Tag:</li>
                                 <li class="tags-list">
-                                    <a href="#">Business</a>
-                                    <a href="#">Design</a>
-                                    <a href="#">apps</a>
-                                    <a href="#">data</a>
+                                    @php
+                                        $tags = array_map('trim', explode(',', $blog->tags));
+                                    @endphp
+                                    @foreach ($tags as $tag)
+                                        <a href="#">{{ $tag }} </a>
+                                    @endforeach
                                 </li>
                             </ul>
                             <ul class="blog__details__social">
@@ -194,7 +196,7 @@
 
                         @include('frontend.blog_all.categories')
 
-                        
+
                         {{-- <div class="widget">
                             <h4 class="widget-title">Recent Comment</h4>
                             <ul class="sidebar__comment">
