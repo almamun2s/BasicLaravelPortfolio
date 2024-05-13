@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FooterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
@@ -81,6 +82,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('admin/blog', BlogController::class)->except(['create','show', 'destroy']);
     Route::get('admin/blog_delete/{id}', [BlogController::class , 'destroy'])->name('admin.delete_blog');
 
+
+    // Footer section Routes 
+    Route::get('admin/footer', [FooterController::class, 'edit_footer'])->name('admin.footer');
+    Route::post('admin/footer', [FooterController::class, 'update_footer'])->name('admin.footer_update');
 });    
 
 
