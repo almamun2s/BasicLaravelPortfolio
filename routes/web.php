@@ -30,7 +30,12 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('frontend.about');
 })->name('about');
+
+// Routes for Portfolios
+Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio');
 Route::get('/portfolio/{id}', [PortfolioController::class, 'show_portfolio'])->name('single_portfolio');
+
+// Routes for Blogs
 Route::get('/blogs', [BlogController::class, 'all_blogs'])->name('blogs');
 Route::get('/blogs/category/{id}', [BlogController::class, 'all_blogs_by_category'])->name('category_blogs');
 Route::get('/blog/{id}', [BlogController::class, 'show'])->name('single_blog');

@@ -11,6 +11,15 @@ use Intervention\Image\Facades\Image;
 class PortfolioController extends Controller
 {
     /**
+     * Showing porfolios to frontend
+     */
+    public function index()
+    {
+        $portfolios = Portfolio::latest()->get();
+
+        return view('frontend.portfolio', compact('portfolios'));
+    }
+    /**
      * Showing Portfolio page to admin
      */
     public function portfolio_page()

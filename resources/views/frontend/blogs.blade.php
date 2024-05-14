@@ -1,5 +1,5 @@
 @extends('frontend.body.main_layout')
-@section('title', 'Blogs')
+@section('title', 'Blogs | Rasalina - Personal Portfolio HTML Template')
 
 
 @section('main_body')

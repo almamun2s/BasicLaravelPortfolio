@@ -8,29 +8,19 @@
                     <div class="menu__wrap">
                         <nav class="menu__nav">
                             <div class="logo">
-                                <a href="index.html" class="logo__black"><img src="{{ asset( 'frontend/assets/img/logo/logo_black.png')}}"
-                                        alt=""></a>
-                                <a href="index.html" class="logo__white"><img src="{{ asset( 'frontend/assets/img/logo/logo_white.png')}}"
-                                        alt=""></a>
+                                <a href="index.html" class="logo__black"><img
+                                        src="{{ asset('frontend/assets/img/logo/logo_black.png') }}" alt=""></a>
+                                <a href="index.html" class="logo__white"><img
+                                        src="{{ asset('frontend/assets/img/logo/logo_white.png') }}" alt=""></a>
                             </div>
                             <div class="navbar__wrap main__menu d-none d-xl-flex">
                                 <ul class="navigation">
-                                    <li class="active"><a href="{{ route('home') }}">Home</a></li>
-                                    <li><a href="{{ route('about') }}">About</a></li>
+                                    <li class="{{ Request::routeIs('home') ? 'active' : '' }}"><a href="{{ route('home') }}">Home</a></li>
+                                    <li class="{{ Request::routeIs('about') ? 'active' : '' }}"><a href="{{ route('about') }}">About</a></li>
                                     <li><a href="services-details.html">Services</a></li>
-                                    <li class="menu-item-has-children"><a href="#">Portfolio</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="portfolio.html">Portfolio</a></li>
-                                            <li><a href="portfolio-details.html">Portfolio Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item-has-children"><a href="#">Our Blog</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="blog.html">Our News</a></li>
-                                            <li><a href="blog-details.html">News Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="{{ route('contact') }}">contact me</a></li>
+                                    <li class="{{ Request::routeIs('portfolio') ? 'active' : '' }}"><a href="{{ route('portfolio') }}">Portfolio</a></li>
+                                    <li class="{{ Request::routeIs('blogs') ? 'active' : '' }}"><a href="{{ route('blogs') }}">Blogs</a></li>
+                                    <li class="{{ Request::routeIs('contact') ? 'active' : '' }}"><a href="{{ route('contact') }}">contact me</a></li>
                                 </ul>
                             </div>
                             <div class="header__btn d-none d-md-block">
@@ -43,9 +33,10 @@
                         <nav class="menu__box">
                             <div class="close__btn"><i class="fal fa-times"></i></div>
                             <div class="nav-logo">
-                                <a href="index.html" class="logo__black"><img src="{{ asset( 'frontend/assets/img/logo/logo_black.png')}}"
-                                        alt=""></a>
-                                <a href="index.html" class="logo__white"><img src="{{ asset( 'frontend/assets/img/logo/logo_white.png')}}"
+                                <a href="index.html" class="logo__black"><img
+                                        src="{{ asset('frontend/assets/img/logo/logo_black.png') }}" alt=""></a>
+                                <a href="index.html" class="logo__white"><img
+                                        src="{{ asset('frontend/assets/img/logo/logo_white.png') }}"
                                         alt=""></a>
                             </div>
                             <div class="menu__outer">
