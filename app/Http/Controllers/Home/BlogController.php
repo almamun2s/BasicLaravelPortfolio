@@ -77,7 +77,7 @@ class BlogController extends Controller
     public function show(string $id)
     {
         $blog = Blog::findOrFail($id);
-        $allBlogs = Blog::latest()->limit(5)->get();
+        $allBlogs = Blog::latest()->limit(5)->get(); // For showing sidebar blogs
         $categories = BlogCategory::orderBy('name', 'ASC')->get();
 
         return view('frontend.blog_details', compact(['blog', 'allBlogs', 'categories']));
@@ -163,8 +163,8 @@ class BlogController extends Controller
      */
     public function all_blogs()
     {
-        $blogs = Blog::get();
-        $allBlogs = Blog::latest()->limit(5)->get();
+        $blogs = Blog::latest()->paginate(5);
+        $allBlogs = Blog::latest()->limit(5)->get(); // For showing sidebar blogs
         $categories = BlogCategory::orderBy('name', 'ASC')->get();
         $pageTitle = "Blogs";
 
@@ -180,9 +180,9 @@ class BlogController extends Controller
     public function all_blogs_by_category(int $id)
     {
         $blogs = Blog::where('category_id', $id)->get();
-        $allBlogs = Blog::latest()->limit(5)->get();
+        $allBlogs = Blog::latest()->limit(5)->get(); // For showing sidebar blogs
         $categories = BlogCategory::orderBy('name', 'ASC')->get();
-        $pageTitle = BlogCategory::find($id)->name ;
+        $pageTitle = BlogCategory::find($id)->name;
 
         return view('frontend.blogs', compact(['blogs', 'allBlogs', 'categories', 'pageTitle']));
     }
